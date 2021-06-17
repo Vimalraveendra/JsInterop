@@ -69,14 +69,14 @@ using example.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/Users/vimalraveendran/Projects/example/example/Pages/CallJs.razor"
+#line 1 "/Users/vimalraveendran/Projects/example/example/Pages/CallBlazorE.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/CallJS")]
-    public partial class CallJs : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/CallBlazorE")]
+    public partial class CallBlazorE : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -84,27 +84,31 @@ using Microsoft.JSInterop;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "/Users/vimalraveendran/Projects/example/example/Pages/CallJs.razor"
+#line 11 "/Users/vimalraveendran/Projects/example/example/Pages/CallBlazorE.razor"
        
-    private string no1;
-    private string no2;
-    private int sum;
+    private static Action<string> action;
+    private string message;
 
-    public async void ShowAlert()
+    protected override void OnInitialized()
     {
-        await JS.InvokeVoidAsync("JSAlert");
+        action = UpdateMessage;
     }
 
-    public async void ShowSum()
+    private void UpdateMessage(string name)
     {
-        sum = await JS.InvokeAsync<int>("FindSum", no1, no2);
+        message = "Hello " + name;
         StateHasChanged();
+    }
+
+    [JSInvokable]
+    public static void ShowHello(string name)
+    {
+        action.Invoke(name);
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JS { get; set; }
     }
 }
 #pragma warning restore 1591
