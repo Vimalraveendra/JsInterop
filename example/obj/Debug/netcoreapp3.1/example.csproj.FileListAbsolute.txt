@@ -50,3 +50,9 @@
 /Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/example.csproj.CopyComplete
 /Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/CallJs.razor.g.cs
 /Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/Razor/Pages/CallJs.razor.g.cs
+/Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/CallBlazor.razor.g.cs
+/Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/Razor/Pages/CallBlazor.razor.g.cs
+/Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/CallBlazorE.razor.g.cs
+/Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/Razor/Pages/CallBlazorE.razor.g.cs
+/Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/CallBlazorG.razor.g.cs
+/Users/vimalraveendran/Projects/example/example/obj/Debug/netcoreapp3.1/Razor/Pages/CallBlazorG.razor.g.cs

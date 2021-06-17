@@ -69,14 +69,14 @@ using example.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/Users/vimalraveendran/Projects/example/example/Pages/CallJs.razor"
+#line 1 "/Users/vimalraveendran/Projects/example/example/Pages/CallBlazorG.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/CallJS")]
-    public partial class CallJs : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/CallBlazorG")]
+    public partial class CallBlazorG : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -84,27 +84,41 @@ using Microsoft.JSInterop;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "/Users/vimalraveendran/Projects/example/example/Pages/CallJs.razor"
+#line 15 "/Users/vimalraveendran/Projects/example/example/Pages/CallBlazorG.razor"
        
     private string no1;
     private string no2;
-    private int sum;
 
-    public async void ShowAlert()
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    public async Task FindDivision()
     {
-        await JS.InvokeVoidAsync("JSAlert");
+        await JSRuntime.InvokeVoidAsync("CallCalculateDivision", no1, no2);
     }
 
-    public async void ShowSum()
+    public int Calculate(int no1, int no2)
     {
-        sum = await JS.InvokeAsync<int>("FindSum", no1, no2);
-        StateHasChanged();
+        int division = no1 / no2;
+        return division;
+    }
+
+    private static Func<int, int, int> func;
+
+    [JSInvokable]
+    public static int CalculateDivision(int fno, int sno)
+    {
+        int result = func.Invoke(fno, sno);
+        return result;
+    }
+    protected override void OnInitialized()
+    {
+        func = Calculate;
     }
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JS { get; set; }
     }
 }
 #pragma warning restore 1591
